@@ -54,11 +54,11 @@ Without `--skill` the CLI lists everything in the repository and asks which skil
 
 ### Claude Code: manual copy
 
-Each plugin directory carries its own `plugin.json`, so Claude Code loads it as a skills-directory plugin:
+Every skill lives in `plugins/<plugin>/skills/<skill>/`; copy that folder, not the plugin directory around it:
 
 ```bash
 git clone https://github.com/Londeren/claude-plugins.git /tmp/claude-plugins
-cp -r /tmp/claude-plugins/plugins/prompt-writer ~/.claude/skills/prompt-writer
+cp -r /tmp/claude-plugins/plugins/prompt-writer/skills/prompt-writer ~/.claude/skills/prompt-writer
 ```
 
 For `glavred-skill`, clone its own repository and copy the skill out of it:
@@ -115,8 +115,9 @@ Enable "Code execution and file creation" in Settings → Capabilities if it is 
                                   an external repository (glavred-skill)
 plugins/<name>/                 - a plugin (prompt-writer, book-to-skill), ships to users
   .claude-plugin/plugin.json    - plugin manifest
-  SKILL.md                      - entry point, the only file loaded on activation
-  <supporting files>            - reference sheets, templates, checklists, read on demand
+  skills/<skill>/               - the skill itself; the folder name is the skill name
+    SKILL.md                    - entry point, the only file loaded on activation
+    <supporting files>          - reference sheets, templates, checklists, read on demand
   README.md                     - the plugin's own documentation
 docs/                           - specs, plans and development notes, not shipped
 CLAUDE.md                       - instructions for Claude Code working on this repository

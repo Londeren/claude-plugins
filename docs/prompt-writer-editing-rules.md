@@ -2,7 +2,7 @@
 
 Rules for editing the `prompt-writer` plugin, imported by the root [CLAUDE.md](../CLAUDE.md), which also holds the repository-wide conventions (packaging boundary, docs, publication, validation commands). The file lives in `docs/` rather than inside the plugin because everything under `plugins/<name>/` ships to users.
 
-Every path below is relative to `plugins/prompt-writer/`.
+Every path below is relative to the skill folder `plugins/prompt-writer/skills/prompt-writer/`, which holds SKILL.md, `templates/`, `reference/` and `checklists/`. The exception is README.md, which lives one level up at `plugins/prompt-writer/README.md` next to the plugin manifest.
 
 ## What this is
 

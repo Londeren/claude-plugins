@@ -18,7 +18,7 @@ Plugins in the repository:
 
 ## Adding a plugin
 
-1. `plugins/<name>/` with `.claude-plugin/plugin.json`, `SKILL.md`, `README.md`, `LICENSE`.
+1. `plugins/<name>/` with `.claude-plugin/plugin.json`, `skills/<skill>/SKILL.md`, `README.md`, `LICENSE`.
 2. An entry in the `plugins[]` array of `.claude-plugin/marketplace.json`.
 3. `docs/<name>-editing-rules.md` if the skill needs its own editing rules, imported from this file and listed above.
 4. A row in the plugin table of the root README.
@@ -26,6 +26,12 @@ Plugins in the repository:
 Do not create the directory before the skill has real content. The skills.sh CLI discovers skills by walking the repository for `SKILL.md` files, not by reading marketplace.json, so a placeholder shows up in the public listing the moment it is pushed.
 
 Editing rules never live inside `plugins/<name>/`. Everything there ships, and the skills.sh route installs into `.agents/skills/<name>/` inside the user's own project, where a stray CLAUDE.md would be loaded as their nested project instructions.
+
+## Skill layout inside a plugin
+
+A skill lives in `plugins/<plugin>/skills/<skill>/SKILL.md`, never at the plugin root. Claude Code documents a fallback where a root `SKILL.md` is loaded as the plugin's single skill, and locally it works, but the claude.ai loader does not implement that fallback: it mounts `/mnt/skills/plugins/<plugin>:<skill>/` and takes the skill name from the folder under `skills/`. With no `skills/` directory the plugin installs, reports itself as installed, and exposes zero skills. `claude plugin validate` passes either way and will not catch this.
+
+Consequence for the manual-copy install route in the root README: it names the skill folder, not the plugin directory.
 
 ## No cross-plugin runtime references
 

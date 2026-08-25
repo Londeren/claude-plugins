@@ -1,6 +1,6 @@
 # book-to-skill: editing rules
 
-Rules for editing the `book-to-skill` plugin, imported by the root [CLAUDE.md](../CLAUDE.md). Repository-wide conventions (packaging boundary, publication, validation commands) live there. Every path below is relative to `plugins/book-to-skill/`.
+Rules for editing the `book-to-skill` plugin, imported by the root [CLAUDE.md](../CLAUDE.md). Repository-wide conventions (packaging boundary, publication, validation commands) live there. Every path below is relative to the skill folder `plugins/book-to-skill/skills/book-to-skill/`, which holds SKILL.md and `references/`. The exception is README.md, which lives one level up at `plugins/book-to-skill/README.md` next to the plugin manifest.
 
 ## What this is
 
