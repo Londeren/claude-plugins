@@ -4,7 +4,7 @@
     "name": "Sergey Lebedev",
     "url": "https://github.com/Londeren"
   },
-  "description": "Plugins by Londeren for Claude Code and claude.ai. One entry per plugin under plugins/.",
+  "description": "Plugins by Londeren for Claude Code and claude.ai. One entry per plugin: meta-skills under plugins/, skills built from books in Londeren/bookshelf-skills.",
   "plugins": [
     {
       "name": "prompt-writer",
@@ -30,10 +30,11 @@
     {
       "name": "glavred-skill",
       "source": {
-        "source": "url",
-        "url": "https://github.com/Londeren/glavred-skill.git"
+        "source": "git-subdir",
+        "url": "https://github.com/Londeren/bookshelf-skills.git",
+        "path": "plugins/glavred-skill"
       },
-      "description": "Reviews and edits social media posts by the method of Maxim Ilyahov. Reports findings level by level (meaning, delivery, wording, format) and rewrites a post keeping the author's facts and voice. Works in Russian, lives in its own repository.",
+      "description": "Reviews and edits social media posts by the method of Maxim Ilyahov. Reports findings level by level (meaning, delivery, wording, format) and rewrites a post keeping the author's facts and voice. Works in Russian, lives in the bookshelf-skills repository.",
       "category": "productivity",
       "tags": [
         "editing",

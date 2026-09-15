@@ -8,9 +8,9 @@ Plugins by [Londeren](https://github.com/Londeren) for Claude Code, claude.ai an
 |---|---|---|
 | **prompt-writer** | Writes and rewrites prompts for LLMs. Routes the request into one of five prompt types, applies 24 master rules read out of the Claude system prompts, then audits the draft against a self-check list | [plugins/prompt-writer](plugins/prompt-writer/README.md) |
 | **book-to-skill** | Turns a book, manual or transcript in Markdown into a working skill. Extracts the method rather than a retelling, anchors every unit in a verbatim quote from the source, rejects what a competent specialist would know anyway, and measures the result against a no-skill baseline | [plugins/book-to-skill](plugins/book-to-skill/README.md) |
-| **glavred-skill** | Reviews and edits social media posts by the method of Maxim Ilyahov. Reports findings level by level (meaning, delivery, wording, format) with a quote from the post and the rule behind each one, or rewrites the post keeping the author's facts and voice. Works in Russian | [Londeren/glavred-skill](https://github.com/Londeren/glavred-skill) |
+| **glavred-skill** | Reviews and edits social media posts by the method of Maxim Ilyahov. Reports findings level by level (meaning, delivery, wording, format) with a quote from the post and the rule behind each one, or rewrites the post keeping the author's facts and voice. Works in Russian | [Londeren/bookshelf-skills](https://github.com/Londeren/bookshelf-skills/tree/main/plugins/glavred-skill) |
 
-All three are plain Markdown: no build step, no dependencies, nothing to run. `glavred-skill` lives in a repository of its own. The marketplace entry points at it, so the marketplace routes install it like any other plugin; the routes that copy files straight out of a checkout name its repository instead of this one.
+All three are plain Markdown: no build step, no dependencies, nothing to run. This repository keeps the meta-skills, the ones that build other prompts and skills; `glavred-skill` lives in [bookshelf-skills](https://github.com/Londeren/bookshelf-skills), the repository for skills built from books. The marketplace entry points at it, so the marketplace routes install it like any other plugin; the routes that copy files straight out of a checkout name its repository instead of this one.
 
 ## Installation
 
@@ -45,10 +45,10 @@ The [skills.sh](https://www.skills.sh) CLI installs into whatever agents it find
 ```bash
 npx skills add Londeren/claude-plugins --skill prompt-writer
 npx skills add Londeren/claude-plugins --skill book-to-skill
-npx skills add Londeren/glavred-skill --skill glavred
+npx skills add Londeren/bookshelf-skills --skill glavred
 ```
 
-The last line names a different repository on purpose: `glavred-skill` is not stored here, and the CLI walks whichever repository it is given.
+The last line names a different repository on purpose: `glavred-skill` is stored in bookshelf-skills, and the CLI walks whichever repository it is given.
 
 Without `--skill` the CLI lists everything in the repository and asks which skills to install; `-l` lists them without installing. Files land in `.agents/skills/<name>` for the current project, symlinked into each agent's own skills directory. Add `-g` to install for your user instead of the project, and `--copy` if you would rather have real files than symlinks.
 
@@ -61,11 +61,11 @@ git clone https://github.com/Londeren/claude-plugins.git /tmp/claude-plugins
 cp -r /tmp/claude-plugins/plugins/prompt-writer/skills/prompt-writer ~/.claude/skills/prompt-writer
 ```
 
-For `glavred-skill`, clone its own repository and copy the skill out of it:
+For `glavred-skill`, clone bookshelf-skills and copy the skill out of it:
 
 ```bash
-git clone https://github.com/Londeren/glavred-skill.git /tmp/glavred-skill
-cp -r /tmp/glavred-skill/skills/glavred ~/.claude/skills/glavred
+git clone https://github.com/Londeren/bookshelf-skills.git /tmp/bookshelf-skills
+cp -r /tmp/bookshelf-skills/plugins/glavred-skill/skills/glavred ~/.claude/skills/glavred
 ```
 
 Use `.claude/skills/` inside a repository instead of `~/.claude/skills/` to scope it to that project.
@@ -111,8 +111,8 @@ Enable "Code execution and file creation" in Settings → Capabilities if it is 
 ```
 .claude-plugin/
   marketplace.json              - marketplace manifest, one entry per plugin;
-                                  an entry either points into plugins/ or at
-                                  an external repository (glavred-skill)
+                                  an entry either points into plugins/ or into
+                                  bookshelf-skills (glavred-skill)
 plugins/<name>/                 - a plugin (prompt-writer, book-to-skill), ships to users
   .claude-plugin/plugin.json    - plugin manifest
   skills/<skill>/               - the skill itself; the folder name is the skill name
