@@ -9,7 +9,7 @@ Repository-wide guidance for Claude Code. Each plugin's own editing rules live i
 
 A plugin marketplace for Claude: `.claude-plugin/marketplace.json` at the root, one entry per plugin. Markdown only, no build, no tests, no dependencies.
 
-This repository holds meta-skills only: skills that build or improve other prompts and skills. A domain skill, one that carries a method taken from a book, a course or an author, lives in [Londeren/bookshelf-skills](https://github.com/Londeren/bookshelf-skills), one plugin per skill, with its build pipeline next to it. Here it gets a marketplace entry with a `git-subdir` source, a row in the root README table and its install routes in the root README, nothing else.
+This repository holds meta-skills only: skills that build or improve other prompts and skills. A domain skill, one that carries a method taken from a book, a course or an author, lives in [Londeren/bookshelf-skills](https://github.com/Londeren/bookshelf-skills), one plugin per method, with its build pipeline next to it. Here it gets a marketplace entry with a `git-subdir` source, a row in the root README table and its install routes in the root README, nothing else.
 
 Only what lives inside a `plugins/<name>/` directory ships to users. `docs/`, `tmp/`, this file and the root README never do.
 
@@ -27,7 +27,7 @@ A meta-skill in this repository:
 3. `docs/<name>-editing-rules.md` if the skill needs its own editing rules, imported from this file and listed above.
 4. A row in the plugin table of the root README.
 
-A domain skill is built in bookshelf-skills by that repository's own rules. Here it takes steps 2 and 4 plus its install routes in the root README, and its marketplace entry points into the other repository:
+A domain skill is built in bookshelf-skills by that repository's own rules. Here it takes steps 2 and 4 plus its install routes in the root README. Its marketplace entry carries an English description whatever the language of the skill, and its source points into the other repository:
 
 ```json
 "source": {
@@ -36,6 +36,8 @@ A domain skill is built in bookshelf-skills by that repository's own rules. Here
   "path": "plugins/<name>"
 }
 ```
+
+A new plugin touches six places in the root README: its row in the plugin table, a line in each of the two Claude Code install blocks, its lines in the npx block and in the manual-copy block, one per skill, and a line in `enabledPlugins` of the team settings. A plugin from bookshelf-skills names that repository in its npx lines and goes into the manual-copy block that clones it.
 
 Do not create the directory before the skill has real content. The skills.sh CLI discovers skills by walking the repository for `SKILL.md` files, not by reading marketplace.json, so a placeholder shows up in the public listing the moment it is pushed.
 
