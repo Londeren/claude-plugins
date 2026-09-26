@@ -42,6 +42,22 @@
         "social-media",
         "russian"
       ]
+    },
+    {
+      "name": "hormozi",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/Londeren/bookshelf-skills.git",
+        "path": "plugins/hormozi"
+      },
+      "description": "Diagnoses a business by the method of Alex Hormozi ($100M Offers, $100M Leads, $100M Money Models): what is broken and what to fix first. Reviews an offer, an ad, a sales script, pricing, a money model, lead nurture or retention with the rule behind each finding, and rewrites the material keeping the user's facts and numbers. Answers in the language of the request, lives in the bookshelf-skills repository.",
+      "category": "productivity",
+      "tags": [
+        "marketing",
+        "sales",
+        "pricing",
+        "offers"
+      ]
     }
   ]
 }

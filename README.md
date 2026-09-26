@@ -9,6 +9,7 @@ Plugins by [Londeren](https://github.com/Londeren) for Claude Code, claude.ai an
 | **prompt-writer** | Writes and rewrites prompts for LLMs. Routes the request into one of five prompt types, applies 24 master rules read out of the Claude system prompts, then audits the draft against a self-check list | [plugins/prompt-writer](plugins/prompt-writer/README.md) |
 | **book-to-skill** | Turns a book, manual or transcript in Markdown into a working skill. Extracts the method rather than a retelling, anchors every unit in a verbatim quote from the source, rejects what a competent specialist would know anyway, and measures the result against a no-skill baseline | [plugins/book-to-skill](plugins/book-to-skill/README.md) |
 | **glavred-skill** | Reviews and edits social media posts by the method of Maxim Ilyahov. Reports findings level by level (meaning, delivery, wording, format) with a quote from the post and the rule behind each one, or rewrites the post keeping the author's facts and voice. Works in Russian | [Londeren/bookshelf-skills](https://github.com/Londeren/bookshelf-skills/tree/main/plugins/glavred-skill) |
+| **hormozi** | Diagnoses a business by the method of Alex Hormozi: what is broken and what to fix first, in at most three steps with the rule behind each. Reviews an offer, an ad, a sales script, pricing, a money model, lead nurture or retention with a quote from the material and the rule behind each finding, or rewrites the material keeping the user's facts and numbers. Answers in the language of the request | [Londeren/bookshelf-skills](https://github.com/Londeren/bookshelf-skills/tree/main/plugins/hormozi) |
 
 Every plugin is plain Markdown: no build step, no dependencies, nothing to run. This repository keeps the meta-skills, the ones that build other prompts and skills. Plugins built from books live in [bookshelf-skills](https://github.com/Londeren/bookshelf-skills); their marketplace entries point there, so the marketplace routes install them like any other plugin, and the routes that copy files straight out of a checkout name that repository instead of this one.
 
@@ -23,6 +24,7 @@ Every route below starts from this marketplace. The plugin ids are the plugin na
 /plugin install prompt-writer@Londeren
 /plugin install book-to-skill@Londeren
 /plugin install glavred-skill@Londeren
+/plugin install hormozi@Londeren
 ```
 
 The marketplace registers under the repository owner, `Londeren`, which is why a plugin id ends in `@Londeren`. If the install summary says `Run /reload-plugins to activate.`, run that command.
@@ -34,6 +36,7 @@ claude plugin marketplace add Londeren/claude-plugins
 claude plugin install prompt-writer@Londeren
 claude plugin install book-to-skill@Londeren
 claude plugin install glavred-skill@Londeren
+claude plugin install hormozi@Londeren
 ```
 
 Add `--scope project` to the install to share it with everyone working on the current repository.
@@ -46,6 +49,7 @@ The [skills.sh](https://www.skills.sh) CLI installs into whatever agents it find
 npx skills add Londeren/claude-plugins --skill prompt-writer
 npx skills add Londeren/claude-plugins --skill book-to-skill
 npx skills add Londeren/bookshelf-skills --skill glavred
+npx skills add Londeren/bookshelf-skills --skill hormozi
 ```
 
 The CLI walks whichever repository it is given, so a plugin built from books names bookshelf-skills in its line.
@@ -66,6 +70,7 @@ For a plugin built from books, clone bookshelf-skills and copy its skill out of 
 ```bash
 git clone https://github.com/Londeren/bookshelf-skills.git /tmp/bookshelf-skills
 cp -r /tmp/bookshelf-skills/plugins/glavred-skill/skills/glavred ~/.claude/skills/glavred
+cp -r /tmp/bookshelf-skills/plugins/hormozi/skills/hormozi ~/.claude/skills/hormozi
 ```
 
 Use `.claude/skills/` inside a repository instead of `~/.claude/skills/` to scope it to that project.
@@ -87,7 +92,8 @@ Commit this to the repository's `.claude/settings.json`. Claude Code offers the 
   "enabledPlugins": {
     "prompt-writer@Londeren": true,
     "book-to-skill@Londeren": true,
-    "glavred-skill@Londeren": true
+    "glavred-skill@Londeren": true,
+    "hormozi@Londeren": true
   }
 }
 ```
