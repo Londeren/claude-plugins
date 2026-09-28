@@ -143,9 +143,11 @@ Mandatory SKILL.md blocks in this order, and the order is not rearranged:
 4. **Output rules**, the shape in which the agent hands the result over: an answer written for its reader, with the rule numbers only in a basis block that closes it (sheet 03).
 5. **Sources**: what the method rests on, each source by a descriptive name: its kind, title, author, and the edition or year when the method depends on it. Several sources, their tiers plus the line that the upper tier wins where formulations diverge. Nothing about the build: file names, paths, export dates, and unit counts go into `PROVENANCE.md` next to SKILL.md, described in the sheet. SKILL.md is loaded on every activation, and a path to a local export helps no one who applies the method.
 
-Material is split across sheets **by user tasks, not by source chapters**. A book's table of contents is optimized for linear reading, a skill for targeted access. The sign of a correct split: a typical request opens one or two sheets, not five.
+Material is split across sheets **by user tasks, not by source chapters**. A book's table of contents is optimized for linear reading, a skill for targeted access. The sign of a correct split: a typical request opens one or two sheets besides the checklist sheet, not five.
 
 Keep SKILL.md under 500 lines and a reference sheet under 300.
+
+Phase 3 closes with the check at the end of this file, before any eval runs.
 
 </phase_3>
 
@@ -171,7 +173,7 @@ Do not show walls of raw catch and do not narrate what you did at each step.
 
 Do not write in the output: step announcements ("now I will run the extractors"), a restatement of the user's request, explanations of how the pipeline works, "I hope this helps", "feel free to reach out", "in conclusion".
 
-As the last line of the report, propose the next step: run the assembled SKILL.md through the prompt-writer skill if the user has it installed. The user checks that condition, the recommendation is printed always. A generated skill is a prompt, and an audit by the rules of prompts strengthens it.
+As the last line of the report, propose the next step: run the assembled SKILL.md through the prompt-writer skill if the user has it installed. The user checks that condition, the recommendation is printed always. A generated skill is a prompt, and an audit by the rules of prompts strengthens it. A rewrite made by that audit changes the version that ships, so it passes through the check below and the with-skill run of phase 4 again.
 
 </reporting>
 
@@ -189,17 +191,17 @@ You lack the context to choose the skill's mode or the split into sheets, ask on
 
 <self_check>
 
-## The check before delivering the result
+## The check before the evals
 
-The assembled skill is a draft. The audit answers the questions by naming concrete places, not by rating compliance:
+A fix made after the evals passes through this check again. The assembled skill is a draft. The audit answers the questions by naming concrete places, not by rating compliance:
 
 1. Name the units in the sheets with no anchor, or with an anchor that carries no address. Take a sample of five anchors and find them by mechanical search over the source.
 2. Name a rule that is not in the source but that seemed reasonable to add. Delete what you find.
 3. Name the blocks of the form "in chapter 5 the author explains". Rewrite what you find from retelling into prescription, or delete it.
-4. Name a typical request from the routing table that opens more than two sheets. Recut what you find.
-5. Name a rule with no example, or with an empty "when not to apply" field. Fill it in from the source, or put in the explicit line that the source carries no example and no caveats. Composing either one yourself is writing on the author's behalf.
-6. Name a unit that cannot be applied without opening the source. Compress what you find: the finished skill replaces searching the source, and the consumer will not have the source at hand.
-7. Check the numbers: the core is 5-8 principles and stands as the first block; at least a third of the candidates was rejected; `PROVENANCE.md` is filled in. Name every file name, path, export date, or unit count that got into SKILL.md, and move what you find into `PROVENANCE.md`.
+4. Name a typical request from the routing table that opens more than two sheets besides the checklist sheet, which every final check opens. Recut what you find.
+5. Name a rule whose example, reason or caveat is missing, or was composed rather than taken from the source. Fill it in from the source, or put in the field's explicit line: "No example in the source.", "No reason given in the source.", "No special caveats in the source." Composing any of the three yourself is writing on the author's behalf.
+6. Name a unit that cannot be applied without opening the source. Bring what it lacks into the unit from the source, compressed: the finished skill replaces searching the source, and the consumer will not have the source at hand.
+7. Check the numbers: the core is 5-8 principles and stands as the first block; at least a third of the candidates was rejected; `PROVENANCE.md` is filled in for phases 0-3. Name every file name, path, export date, or unit count that got into SKILL.md, and move what you find into `PROVENANCE.md`.
 8. Name every line of the generated SKILL.md and of its checklist sheet that makes the body of an answer carry rule numbers, source titles, years or the author's caveats as a matter of course, or say "the method" without the author's name, and every final-check question that hunts for citations there. Rewrite what you find by the Output rules section of sheet 03: the numbers move to the basis block, and the final check asks about the block.
 
 Then rewrite the skill so that every item found is closed. A result where the audit found a problem and the final version did not close it is not delivered.

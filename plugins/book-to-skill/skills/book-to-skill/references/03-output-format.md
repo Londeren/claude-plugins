@@ -13,7 +13,7 @@ A format of five fields, proven in practice. Every unit looks like this:
 - **Rule:** the subject and the topic of the key sentences is the reader and the reader's situation, not the author, the company, or the product.
 - Why it works: the reader is interested in themselves and their problem, and scrolls past a text about the author.
 - Bad → Good: "We provide a personal specialist and develop a strategy" → "Your specialist walks you through every mistake until you get a result".
-- When not to apply: <the author's caveat> or the line "No special caveats in the source".
+- When not to apply: <the author's caveat> or the line "No special caveats in the source."
 - Anchor: «Подлежащим ключевой фразы должен быть читатель, а не компания.» (гл. 3, раздел «Подлежащее»)
 ```
 
@@ -22,10 +22,12 @@ The anchor stays in the language of the source, whatever language the skill is w
 Why these five fields:
 
 - **Rule** is checkable, a yes or no verdict can be delivered on a concrete piece of work by it.
-- **Why it works** lets the agent apply the rule in a situation the source never covered, instead of following it blindly.
-- **Bad → Good** gives a foothold, without which the rule collapses into a slogan. Where the source carries no example for a rule, put in the explicit line "No example in the source" instead of composing one: an invented example is writing on the author's behalf, and the same explicit line that covers a missing caveat covers a missing example.
-- **When not to apply** is the most expensive field. The explicit line "no caveats in the source" is mandatory where there are none. An empty field is indistinguishable from a forgotten one, and an explicit line records that the source was checked.
+- **Why it works** lets the agent apply the rule in a situation the source never covered, instead of following it blindly. It carries the author's reason; where neither the unit nor its merged duplicates give one, it carries the explicit line "No reason given in the source." rather than a reason composed on the author's behalf.
+- **Bad → Good** gives a foothold, without which the rule collapses into a slogan. Where the source carries no example for a rule, put in the explicit line "No example in the source." instead of composing one: an invented example is writing on the author's behalf.
+- **When not to apply** is the most expensive field. The explicit line "No special caveats in the source." is mandatory where there are none. An empty field is indistinguishable from a forgotten one, and an explicit line records that the source was checked.
 - **Anchor** makes the unit self-sufficient: a verbatim quote with an address, the ground already inside, and the consumer of the skill needs neither a search over the source nor the source itself at hand. The anchor stays in the language of the source. If the skill is going to be published beyond the user's team, trim the quotes down to addresses: verbatim chunks of a book are not handed outside. Trimming is the last step and it runs on a finished artifact. Assembly and the self-check run on full quotes: the audit checks anchors by mechanical search over the source, and once the quotes are gone there is nothing left to search for.
+
+Each of the three explicit lines keeps one fixed wording across a skill, translated once into the skill's language.
 
 Numbering runs through each sheet, `NN.M`. It is there so that SKILL.md, the sheets and the basis block that closes an answer can point at a specific rule rather than at "a principle from the book".
 
@@ -53,8 +55,8 @@ unpacking. This is the front-load, the most valuable thing in the skill.>
 
 ## The order of work
 
-### 1. Diagnosis
-### 2. <Frame or preparation>
+### 1. <Diagnosis, or preparation where writing from scratch dominates, as phase 0 decided>
+### 2. <Frame>
 ### 3. <The main work>
 ### N. <The mandatory final check>
 
@@ -150,7 +152,7 @@ Bad: "The morning advice follows from 2.7, the rule about the reader's attention
 
 ## What goes into PROVENANCE.md
 
-`PROVENANCE.md` sits next to SKILL.md and is never loaded on activation. It holds everything about the build that the applying agent has no use for: the build date; the source map from phase 0, the tiers and the rules specific to this build; the export used for each source, its file name and export date, so that a disputed unit can be re-checked against it while the export exists; the statistics, extracted, rejected by filter, merged, included, per source when there are several; and what the checks did not cover, validation run without subagents for one.
+`PROVENANCE.md` sits next to SKILL.md and is never loaded on activation. It holds everything about the build that the applying agent has no use for: the build date; the source map from phase 0, the tiers and the rules specific to this build; the export used for each source, its file name and export date, so that a disputed unit can be re-checked against it while the export exists; the statistics, extracted, rejected by filter, merged, included, per source when there are several; the eval results and any threshold the user waived; and what the checks did not cover, validation run without subagents for one.
 
 </build_record>
 
@@ -160,7 +162,7 @@ Bad: "The morning advice follows from 2.7, the rule about the reader's attention
 
 Split by **user tasks**, not by source chapters. A book's table of contents is optimized for linear reading, a skill for targeted access.
 
-The sign of a correct split: by the routing table a typical request opens one or two sheets, not five.
+The sign of a correct split: by the routing table a typical request opens one or two sheets besides the checklist sheet, not five.
 
 The last-numbered sheet is always `NN-checklist-and-antipatterns.md`: the checklist for checking finished work plus the whole catch of extractor D. It is used in two modes, as the final check and as a diagnosis of someone else's material, and is therefore needed more often than the rest.
 

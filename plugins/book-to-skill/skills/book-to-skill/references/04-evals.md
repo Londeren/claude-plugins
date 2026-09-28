@@ -42,7 +42,7 @@ An absence is not an assertion: a grader cannot quote it. That the answer holds 
 
 ## How to run the set
 
-**Where the environment has subagents.** For every request, launch two independent subagents with a clean context: one with the skill, one without it as the baseline. Both get the text of the request and nothing else, nothing about the skill and nothing about this being a test. Save both outputs. That is what gives you a measurable delta.
+**Where the environment has subagents.** For every request, launch two independent subagents with a clean context: one with the skill, one without it as the baseline. The one with the skill gets it the way an installed skill loads: the body of SKILL.md in its context and the paths of the sheets, which it opens itself by the routing table. Beyond that, both get the text of the request and nothing else, nothing about the method and nothing about this being a test. Save both outputs. That is what gives you a measurable delta.
 
 **Where there are no subagents.** An honest baseline is out of reach: you wrote the skill and know what the result should look like, so a "run without the skill" by your own hand measures nothing. In this mode run with the skill only, one request at a time, and move on to a qualitative assessment by the user. Tell them plainly: the delta was not measured, there is only a check for holes.
 
@@ -84,6 +84,8 @@ The summary for a run:
 
 The thresholds are taken from someone else's practice and may turn out to be wrong for humanities domains. After the first run, discuss with the user whether to move the bar, but do not move it retroactively to fit the result you got.
 
+A failed threshold with the skill or on the delta does not end the phase. Fix the skill where the failures point, pass the fix through the check at the end of SKILL.md, and rerun the with-skill arm of the whole set on the fixed version, up to two rounds: the baseline does not change, and the thresholds are read on the last full run. Then show the user what still fails. The skill ships with a failed threshold only on the user's explicit decision, recorded in `PROVENANCE.md` with the numbers. A baseline at 70 percent or above is not fixed: it is the honest result above, reported as it stands.
+
 </thresholds>
 
 <criteria>
@@ -112,7 +114,7 @@ The procedure:
 
 1. Write 10-12 requests that should trigger it: different phrasings of one task, the ones where the method is not named included. Plus 3-4 requests where the skill must **not** open.
 2. Split the set in half: you tune on one half and check on the other. Do not touch the second until the end, or you will fit the description to specific words.
-3. Run the first half, recording for each request whether the skill opened. Where there are subagents, run every request three times, triggering is unstable.
+3. Run the first half: the agent gets the request and the descriptions of the installed skills, not their bodies, and names the skill it opens; record that for each request. Where there are subagents, run every request three times, triggering is unstable.
 4. Look at the failures and fix the description: add the missing trigger phrasings, sharpen the insistence, remove the vague words. Fix false triggering by narrowing the scope, not by deleting triggers.
 5. Repeat no more than five times. Then run the held-out half. You take the version of the description that does better on the held-out half, not on the tuning half.
 
