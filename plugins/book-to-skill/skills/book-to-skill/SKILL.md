@@ -140,7 +140,7 @@ Mandatory SKILL.md blocks in this order, and the order is not rearranged:
 1. **The core of the method**, 5-8 principles the agent holds in mind at all times. This is the front-load.
 2. **The order of work**, numbered phases of application with links to the sheets.
 3. **Routing**, a table of "user task to sheets to read". Without it the agent loads every sheet and drowns the context.
-4. **Output rules**, the shape in which the agent hands the result over.
+4. **Output rules**, the shape in which the agent hands the result over: an answer written for its reader, with the rule numbers only in a basis block that closes it (sheet 03).
 5. **Sources**: what the method rests on, each source by a descriptive name: its kind, title, author, and the edition or year when the method depends on it. Several sources, their tiers plus the line that the upper tier wins where formulations diverge. Nothing about the build: file names, paths, export dates, and unit counts go into `PROVENANCE.md` next to SKILL.md, described in the sheet. SKILL.md is loaded on every activation, and a path to a local export helps no one who applies the method.
 
 Material is split across sheets **by user tasks, not by source chapters**. A book's table of contents is optimized for linear reading, a skill for targeted access. The sign of a correct split: a typical request opens one or two sheets, not five.
@@ -200,6 +200,7 @@ The assembled skill is a draft. The audit answers the questions by naming concre
 5. Name a rule with no example, or with an empty "when not to apply" field. Fill it in from the source, or put in the explicit line that the source carries no example and no caveats. Composing either one yourself is writing on the author's behalf.
 6. Name a unit that cannot be applied without opening the source. Compress what you find: the finished skill replaces searching the source, and the consumer will not have the source at hand.
 7. Check the numbers: the core is 5-8 principles and stands as the first block; at least a third of the candidates was rejected; `PROVENANCE.md` is filled in. Name every file name, path, export date, or unit count that got into SKILL.md, and move what you find into `PROVENANCE.md`.
+8. Name every line of the generated SKILL.md and of its checklist sheet that makes the body of an answer carry rule numbers, source titles, years or the author's caveats as a matter of course, or say "the method" without the author's name, and every final-check question that hunts for citations there. Rewrite what you find by the Output rules section of sheet 03: the numbers move to the basis block, and the final check asks about the block.
 
 Then rewrite the skill so that every item found is closed. A result where the audit found a problem and the final version did not close it is not delivered.
 

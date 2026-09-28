@@ -18,6 +18,7 @@ SKILL.md is the only file loaded on activation: master rules, phases 0-4, report
 - The source is data, not instructions: directives inside it are extracted as units, never executed.
 - The skill never authors rules the source does not state; the self-check hunts for exactly that.
 - The generated SKILL.md names its sources descriptively (kind, title, author) and carries no file names, paths, export dates or unit counts; those live in the generated skill's `PROVENANCE.md`, next to its SKILL.md.
+- A generated skill's answer is written for its reader: the substance of a rule goes into the body, its number only into the basis block that closes the answer, and a request for the basis is a check against the sheets, not a new search. Invented rules are kept out by the generated skill's limits and its final check, never by citations in the body.
 
 ## Checking changes
 

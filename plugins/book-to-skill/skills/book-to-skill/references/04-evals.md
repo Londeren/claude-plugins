@@ -29,11 +29,12 @@ Write 3-5 assertions for every request as you write it, the ones it will be grad
 - id: Q-03
   query: "Here is the text of a landing page, why does it not sell?"
   assertions:
-    - "The answer names concrete rules of the method rather than general considerations"
+    - "The advice follows concrete rules of the method, stated in words, rather than general considerations"
     - "At least one place in the text is pointed at, with a quote and a breakdown"
     - "The author's names for constructs are given verbatim"
-    - "There are no rules absent from the reference sheets"
 ```
+
+An absence is not an assertion: a grader cannot quote it. That the answer holds no invented rule and no rule number in its body is checked by the separate passes of points 4 and 5 below.
 
 </test_set>
 
@@ -53,7 +54,7 @@ Do not run all fifteen requests before you have looked at the first three. A sys
 
 ## The grader prompt
 
-The grader runs separately, with a clean context, and sees only the request, the output, and the assertions. It must not know which of the outputs came from the skill.
+The grader runs separately, with a clean context, and sees only the request, the output, and the assertions. It must not know which of the outputs came from the skill, so the basis block is cut from every output before grading: it names the skill. The passes of points 4 and 5 below read the block separately.
 
 > You are grading an answer to a task. You are given: the request, the answer, and a list of assertions.
 >
@@ -91,12 +92,13 @@ The thresholds are taken from someone else's practice and may turn out to be wro
 
 The usual "is this a good answer" judgment is weak here. Check specifically:
 
-1. **Was the method applied rather than general erudition.** Concrete rules are visible in the answer, preferably with their numbers.
+1. **Was the method applied rather than general erudition.** The advice follows concrete rules, and the basis block that closes the answer names them.
 2. **Were the author's constructs named exactly.** Swapping the author's name for a synonym is a sign that the skill does not hold its terminology.
-3. **Did the boundaries fire.** On a borderline request the agent said "the method does not apply here" instead of stretching it.
+3. **Did the boundaries fire.** On a borderline request the agent said that the author's method does not cover the case, instead of stretching it.
 4. **Are there invented rules.** The answer contains a rule that is not in the reference sheets. This is the most dangerous failure of all, it means the skill gave the agent a role instead of instructions.
+5. **Is the body written for its reader.** No rule number stands above the basis block, the body never says "the method" without naming the author, and the basis block gives one line per step, finding or change. An answer that passes points 1 and 4 while its body is a wall of citations fails here: the skill built its grounding into the reader's text.
 
-Check point 4 in a separate pass: collect every reference to a rule out of the outputs and match them against the sheets by mechanical search, not from memory.
+Check point 4 in a separate pass: collect every rule number out of the basis blocks and match it against the headings of the sheets by mechanical search, not from memory. Then give a grader each step or finding together with the Rule fields its basis line names, and ask whether the rule says what the step says. A step the body presents as the author's advice while its basis line names no rule counts as an invented rule too. Point 5 starts with a mechanical search for rule numbers above the basis block.
 
 </criteria>
 
